@@ -1,0 +1,159 @@
+.progress-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .progress-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .step-number {
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+  
+  .step-name {
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .step-connector {
+    flex-grow: 1;
+    height: 3px;
+    background-color: #e0e0e0;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Inactive step */
+  .inactive .step-circle {
+    background-color: #f0f0f0;
+    border: 2px solid #e0e0e0;
+  }
+  
+  .inactive .step-number {
+    color: #999;
+  }
+  
+  .inactive .step-name {
+    color: #999;
+  }
+  
+  /* Active step */
+  .active .step-circle {
+    background-color: #fff;
+    border: 2px solid #007bff;
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.2);
+    transform: scale(1.1);
+  }
+  
+  .active .step-number {
+    color: #007bff;
+  }
+  
+  .active .step-name {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Completed step */
+  .completed .step-circle {
+    background-color: #007bff;
+    border: 2px solid #007bff;
+  }
+  
+  .completed .step-number {
+    color: #fff;
+    opacity: 0;
+  }
+  
+  .completed .step-name {
+    color: #007bff;
+  }
+  
+  .completed .step-connector {
+    background-color: #007bff;
+  }
+  
+  /* Checkmark */
+  .checkmark {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+  
+  .completed .checkmark {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #fff;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  
+  .checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke: #fff;
+    stroke-width: 3;
+    fill: none;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+  
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .step-content-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .step-content {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
