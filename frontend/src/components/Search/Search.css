@@ -1,0 +1,133 @@
+:root {
+  font-size: 16px; /* base font size */
+}
+
+.container {
+  /* min-height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f9fc;
+}
+
+.search-box {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 37.5rem; 
+}
+
+.title {
+  font-size: 1.75rem; /* 28px */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.875rem; /* 30px */
+  color: #2563eb;
+}
+
+.travel-type {
+  display: flex;
+  justify-content: center;
+  gap: 1.5625rem; /* 25px */
+  margin-bottom: 1.875rem; /* 30px */
+}
+
+.type-option {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem; /* 10px */
+  padding: 0.75rem 1.25rem; /* 12px 20px */
+  background: #e0f2fe;
+  border-radius: 1.875rem; /* 30px */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.type-option:hover {
+  background: #bfdbfe;
+}
+
+.input-group {
+  display: flex;
+  gap: 1.25rem; /* 20px */
+  margin-bottom: 1.875rem; /* 30px */
+}
+
+.input-field {
+  position: relative;
+  width: 100%;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 0.75rem 1.25rem; /* 12px 20px */
+  padding-left: 2.5rem; /* 40px */
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem; /* 8px */
+  transition: border-color 0.3s;
+}
+
+.input-field input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.input-field label {
+  font-size: 1rem; /* 16px */
+  margin-bottom: 0.3125rem; /* 5px */
+  display: block;
+  color: #333;
+}
+
+.input-field svg {
+  position: absolute;
+  left: 1rem; /* 15px */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #60a5fa;
+}
+
+ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem; /* 8px */
+  max-height: 9.375rem; /* 150px */
+  overflow-y: auto;
+  z-index: 10;
+}
+
+ul li {
+  padding: 0.75rem; /* 12px */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+ul li:hover {
+  background: #e0f2fe;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.9375rem; /* 15px */
+  background: #2563eb;
+  color: #fff;
+  font-size: 1.125rem; /* 18px */
+  border: none;
+  border-radius: 0.5rem; /* 8px */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+}
+
+.submit-btn svg {
+  margin-right: 0.625rem; /* 10px */
+}
