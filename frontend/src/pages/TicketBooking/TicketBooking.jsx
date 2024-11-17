@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './TicketBooking.css'
+import Listing from '../../components/Listing/Listing.jsx' 
 import Search from'../../components/Search/Search.jsx'
 
 const TicketBooking = () => {
   const steps = [
     { number: 1, name: 'Search', component: Search },
-    { number: 2, name: 'Listing', component: Search },
+    { number: 2, name: 'Listing', component: Listing },
     { number: 3, name: 'Book', component: Search },
     { number: 4, name: 'Confirm', component: Search },
   ];
@@ -47,6 +48,7 @@ const TicketBooking = () => {
       </div>
       <div className="step-content-container">
         {React.createElement(steps[activeStep - 1].component)}
+        {/* <Listing/> */}
       </div>
     </div>
   )
