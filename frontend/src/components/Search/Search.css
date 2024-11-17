@@ -3,11 +3,11 @@
 }
 
 .container {
-  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
   background: #f7f9fc;
+  min-height: 100vh;
 }
 
 .search-box {
@@ -16,7 +16,7 @@
   box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1);
   padding: 2.5rem;
   width: 100%;
-  max-width: 37.5rem; 
+  max-width: 37.5rem;
 }
 
 .title {
@@ -49,18 +49,21 @@
   background: #bfdbfe;
 }
 
+/* Input Group Styling */
 .input-group {
   display: flex;
   gap: 1.25rem; /* 20px */
   margin-bottom: 1.875rem; /* 30px */
 }
 
+/* Input Field Styling */
 .input-field {
   position: relative;
   width: 100%;
 }
 
-.input-field input {
+.input-field input,
+.input-field select {
   width: 100%;
   padding: 0.75rem 1.25rem; /* 12px 20px */
   padding-left: 2.5rem; /* 40px */
@@ -69,7 +72,8 @@
   transition: border-color 0.3s;
 }
 
-.input-field input:focus {
+.input-field input:focus,
+.input-field select:focus {
   border-color: #2563eb;
   outline: none;
 }
@@ -81,6 +85,7 @@
   color: #333;
 }
 
+/* Icon inside input */
 .input-field svg {
   position: absolute;
   left: 1rem; /* 15px */
@@ -89,6 +94,15 @@
   color: #60a5fa;
 }
 
+select {
+  appearance: none; /* Remove default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M8 10L4 6h8L8 10z" fill="%2360A5FA"%3E%3C/path%3E%3C/svg%3E') no-repeat 95% center;
+  background-size: 12px;
+}
+
+/* Suggestions list for source and destination */
 ul {
   position: absolute;
   top: 100%;
@@ -96,14 +110,14 @@ ul {
   width: 100%;
   background: #fff;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem; /* 8px */
+  border-radius: 0.5rem;
   max-height: 9.375rem; /* 150px */
   overflow-y: auto;
   z-index: 10;
 }
 
 ul li {
-  padding: 0.75rem; /* 12px */
+  padding: 0.75rem;
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -112,6 +126,7 @@ ul li:hover {
   background: #e0f2fe;
 }
 
+/* Submit Button Styling */
 .submit-btn {
   width: 100%;
   padding: 0.9375rem; /* 15px */

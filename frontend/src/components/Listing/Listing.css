@@ -1,0 +1,181 @@
+.listing-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ebf8ff, #ede7f6);
+  padding: 1rem;
+}
+
+.listing-wrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-button {
+  background: #fff;
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  color: #666;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Day Selector */
+.day-selector {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.day-button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.day-button.selected {
+  background: #1e90ff;
+  color: #fff;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ticket-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.type-label {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+}
+
+.type-label.flight {
+  background: #e3f2fd;
+  color: #1e88e5;
+}
+
+.type-label.bus {
+  background: #e8f5e9;
+  color: #43a047;
+}
+
+.route {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.time {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.price-section {
+  text-align: right;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1e88e5;
+}
+
+.book-button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #1e90ff;
+  color: #fff;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+
+.book-button:hover {
+  background: #005cbf;
+}
+
+/* Filter Modal */
+.filter-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 500px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Slider */
+.slider-track {
+  position: relative;
+  height: 4px;
+  background: #ddd;
+}
+
+.slider-range {
+  position: absolute;
+  background: #1e88e5;
+  height: 4px;
+}
+
+.slider-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1e88e5;
+}

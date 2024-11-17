@@ -5,83 +5,71 @@ import { setSource } from "../../slices/SourceSlice";
 import { setDestination } from "../../slices/destinationSlice";
 import { setDate } from "../../slices/dateSlice";
 import { Plane, Bus, MapPin, Calendar } from "lucide-react";
+import InputMask from "react-input-mask"; // Install using npm install react-input-mask
 import "./Search.css";
 
-const Search = () => {
+const COUNTRIES = [
+  "Pakistan",
+  "Canada",
+  "UK",
+  "India",
+  "Turkey",
+  "Indonesia",
+  "Australia",
+];
+const CITIES = ["Islamabad", "Karachi", "Lahore", "Multan", "Murree"];
+
+const Search = ({ setActiveStep }) => {
   const bookType = useSelector((state) => state.bookType.bookType);
   const source = useSelector((state) => state.source.source);
   const destination = useSelector((state) => state.destination.destination);
   const date = useSelector((state) => state.date.date);
 
   const dispatch = useDispatch();
-  const [fromSuggestions, setFromSuggestions] = useState([]);
-  const [toSuggestions, setToSuggestions] = useState([]);
+
+  const getOptions = () => (bookType === "flight" ? COUNTRIES : CITIES);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!from || !to || !date) {
+    if (!source || !destination || !date) {
       console.log({
-        title: 'Missing Information',
-        description: 'Please fill in all fields before searching.',
-        variant: 'destructive',
+        title: "Missing Information",
+        description: "Please fill in all fields before searching.",
+        variant: "destructive",
       });
       return;
     }
     console.log({
-      title: 'Search Submitted',
-      description: `Searching for ${travelType} from ${from} to ${to} on ${date}`,
+      title: "Search Submitted",
+      description: `Searching for ${bookType} from ${source} to ${destination} on ${date}`,
     });
+    setActiveStep(2); // Move to step 2 (Listing)
   };
 
   const handleBookTypeChange = (e) => {
     dispatch(setBookType(e.target.value));
+    dispatch(setSource(""));
+    dispatch(setDestination(""));
   };
 
   const handleSourceChange = (e) => {
     dispatch(setSource(e.target.value));
-    setFromSuggestions(value.length > 1 ? cities.filter(city => city.toLowerCase().includes(value.toLowerCase())) : []);
   };
 
   const handleDestinationChange = (e) => {
     dispatch(setDestination(e.target.value));
-    setToSuggestions(value.length > 1 ? cities.filter(city => city.toLowerCase().includes(value.toLowerCase())) : []);
   };
 
   const handleDateChange = (e) => {
     dispatch(setDate(e.target.value));
   };
 
-  // const handleFromChange = (e) => {
-  //   const value = e.target.value;
-  //   setFrom(value);
-  //   setFromSuggestions(value.length > 1 ? cities.filter(city => city.toLowerCase().includes(value.toLowerCase())) : []);
-  // };
-
-  // const handleToChange = (e) => {
-  //   const value = e.target.value;
-  //   setTo(value);
-  //   setToSuggestions(value.length > 1 ? cities.filter(city => city.toLowerCase().includes(value.toLowerCase())) : []);
-  // };
-
-  // const handleDateChange = (e) => {
-  //   const numericValue = e.target.value.replace(/\D/g, '');
-  //   if (numericValue.length <= 8) {
-  //     setDate(
-  //       numericValue
-  //         .replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3')
-  //         .replace(/(\d{2})(\d{2})/, '$1/$2')
-  //         .replace(/(\d{2})/, '$1/')
-  //     );
-  //   }
-  // };
-
   return (
     <div className="container">
       <div className="search-box">
         <h1 className="title">Travel Search</h1>
         <form onSubmit={handleSearch}>
-
-          {/* travel type */}
+          {/* Travel type */}
           <div className="travel-type">
             <div className="type-option">
               <input
@@ -98,7 +86,6 @@ const Search = () => {
                 Flight
               </label>
             </div>
-
             <div className="type-option">
               <input
                 type="radio"
@@ -116,54 +103,49 @@ const Search = () => {
             </div>
           </div>
 
-          {/* From and To input fields */}
-          <div className="input-group">
-            <div className="input-field">
-              <label htmlFor="from">From</label>
-              <input
-                type="text"
-                id="from"
-                value={source}
-                onChange={handleSourceChange}
-                placeholder="Enter departure city"
-                aria-label="From city"
-              />
-              <MapPin />
-              {fromSuggestions.length > 0 && (
-                <ul>
-                  {fromSuggestions.map((city, index) => (
-                    <li key={index} onClick={() => { setFrom(city); setFromSuggestions([]); }}>{city}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="input-field">
-              <label htmlFor="to">To</label>
-              <input
-                type="text"
-                id="to"
-                value={destination}
-                onChange={handleDestinationChange}
-                placeholder="Enter destination city"
-                aria-label="To city"
-              />
-              <MapPin />
-              {toSuggestions.length > 0 && (
-                <ul>
-                  {toSuggestions.map((city, index) => (
-                    <li key={index} onClick={() => { setTo(city); setToSuggestions([]); }}>{city}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
+          {/* Source dropdown */}
+          <div className="input-field">
+            <label htmlFor="source">From</label>
+            <select
+              id="source"
+              value={source}
+              onChange={handleSourceChange}
+              aria-label="Source"
+            >
+              <option value="">Select Source</option>
+              {getOptions().map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <MapPin />
           </div>
 
-          {/* Date input field */}
+          {/* Destination dropdown */}
+          <div className="input-field">
+            <label htmlFor="destination">To</label>
+            <select
+              id="destination"
+              value={destination}
+              onChange={handleDestinationChange}
+              aria-label="Destination"
+            >
+              <option value="">Select Destination</option>
+              {getOptions().map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <MapPin />
+          </div>
+
+          {/* Date input with masking */}
           <div className="input-field">
             <label htmlFor="date">Date</label>
-            <input
-              type="text"
-              id="date"
+            <InputMask
+              mask="99/99/9999"
               value={date}
               onChange={handleDateChange}
               placeholder="MM/DD/YYYY"
@@ -176,7 +158,6 @@ const Search = () => {
           <button type="submit" className="submit-btn">
             Search
           </button>
-
         </form>
       </div>
     </div>
