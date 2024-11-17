@@ -3,11 +3,9 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-// import authRoutes from './routes/userRoute.js';
-// import billRoutes from './routes/billRoute.js';
-// import notificationRoutes from './routes/notificationRoute.js';
-// import stripeRoutes from './routes/stripeRoute.js';
-import userRouter from './routes/userRoute.js';
+import busRouter from './routes/busRoutes.js';
+import flightRouter from './routes/flightRoutes.js';
+import bookingRouter from './routes/bookingRoutes.js';
 
 dotenv.config();
 
@@ -26,10 +24,13 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-app.use('/user', userRouter);
+// app.use('/user', userRouter);
 // app.use('/bills', billRoutes);
 // app.use('/notifications', notificationRoutes);
 // app.use('/stripe', stripeRoutes);
+app.use('/api/flights', flightRouter);
+app.use('/api/buses', busRouter);
+app.use('/api/bookings', bookingRouter);
 
 const PORT = process.env.PORT || 5000;
 
