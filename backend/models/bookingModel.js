@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
   travelType: { type: String, enum: ['flight', 'bus'], required: true },
   travelId: { type: mongoose.Schema.Types.ObjectId, refPath: 'travelType', required: true },
   passengerDetails: { type: Array, required: true },

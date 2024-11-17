@@ -4,7 +4,7 @@ import Flight from "../models/flightModel.js";
 
 export const createBooking = async (req, res) => {
   try {
-    const { travelType, travelId, passengerDetails } = req.body;
+    const { travelType, travelId, count } = req.body;
     let travel;
     if (travelType === 'bus') {
       travel = await Bus.findById(travelId);
@@ -16,7 +16,9 @@ export const createBooking = async (req, res) => {
       return res.status(404).json({ message: "Travel not found" });
     }
 
-    const totalPrice = travel.price * passengerDetails.length;
+    console.log('Travel found is :', travel)
+
+    const totalPrice = travel.price * count;
     const booking = new Booking({ ...req.body, totalPrice });
     const savedBooking = await booking.save();
     res.status(201).json(savedBooking);
