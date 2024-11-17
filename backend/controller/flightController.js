@@ -19,7 +19,8 @@ export const getFlights = async (req, res) => {
 
     const flights = await Flight.find({
       departureCountry,
-      arrivalCountry
+      arrivalCountry,
+      departureTime: date,
     });
 
 
